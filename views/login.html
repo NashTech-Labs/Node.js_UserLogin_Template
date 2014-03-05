@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<title>Knoldus Login Form</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/structure.css">
+
+</head>
+<body>
+<form action="/login" method="post" class="box login">
+	<fieldset class="boxBody">
+	<% if (message.length > 0) { %>
+		<div class="alert alert-message"><%= message %></div>
+	<% } %>
+	  <label>Email</label>
+	  <input type="text" tabindex="1" placeholder="Enter Your Email Address" name="email" required>
+ 	<label>Password</label>
+	  <input type="password" tabindex="2"  name="password" required>
+	</fieldset>
+	<footer>
+	<input TYPE="button"class="btnLogin" value="SignUp"  onClick="parent.location='/signup'">
+	  <input type="submit" class="btnLogin" value="Login" tabindex="4">
+	</footer>
+
+</form>
+</body>
+</html>

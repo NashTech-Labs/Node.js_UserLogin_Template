@@ -1,0 +1,164 @@
+/*
+  ✰✰✰✰✰✰✰✰✰✰✰✰✰✰ 
+
+  Simple Login Form
+  HTML5/CSS3 Coded by: $hekh@r d-Ziner, CSSJunction.com
+  PSD by:PremiumPixels.com
+  
+  Uuage: Free. You can modify, remove our links and use wherever you want ☺.
+  
+  ✰✰✰✰✰✰✰✰✰✰✰✰✰✰✰ 
+  
+*/
+body{
+  background:#eff3f6;
+}
+.alert{padding:5px;margin-bottom:5px;border:1px solid transparent;border-radius:3px}.alert h4{margin-top:0;color:inherit}.alert .alert-link{font-weight:bold}.alert>p,.alert>ul{margin-bottom:0}.alert>p+p{margin-top:5px}.alert-dismissable{padding-right:10px}.alert-dismissable .close{position:relative;top:-2px;right:-21px;color:inherit}.alert-success{color:#468847;background-color:#dff0d8;border-color:#d6e9c6}.alert-success hr{border-top-color:#c9e2b3}.alert-success .alert-link{color:#356635}.alert-info{color:#3a87ad;background-color:#d9edf7;border-color:#bce8f1}.alert-info hr{border-top-color:#a6e1ec}.alert-info .alert-link{color:#2d6987}.alert-warning{color:#c09853;background-color:#fcf8e3;border-color:#faebcc}.alert-warning hr{border-top-color:#f7e1b5}.alert-warning .alert-link{color:#a47e3c}.alert-message{color:#b94a48;background-color:#f2dede;border-color:#ebccd1}.alert-message hr{border-top-color:#e4b9c0}.alert-message .alert-link{color:#953b39}
+.box
+{
+    background:#fefefe;
+    border: 1px solid #C3D4DB;
+	border-top:1px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    -moz-box-shadow:rgba(0,0,0,0.15) 0 0 1px;
+    -webkit-box-shadow:rgba(0,0,0,0.15) 0 0 1px;
+    box-shadow:rgba(0,0,0,0.15) 0 0 1px;
+    color:#444;
+    font:normal 12px/14px Arial, Helvetica, Sans-serif;
+    margin:0 auto 30px;
+	overflow:hidden;
+}
+.box.login
+{
+	height:320px;
+    width:332px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-130px 0 0 -166px;
+}
+.boxBody
+{
+    background:#fefefe;
+    border-top:1px solid #dde0e8;
+    border-bottom:1px solid #dde0e8;
+    padding:10px 20px;
+}
+
+.box footer
+{
+    background:#eff4f6;
+    border-top:1px solid #fff;
+    padding:22px 26px;
+    overflow:hidden;
+	height:32px;
+}
+.box label
+{
+    display:block;
+    font:14px/22px Arial, Helvetica, Sans-serif;
+    margin:10px 0 0 6px;
+}
+.box footer label{
+	float:left;
+	margin:4px 0 0;
+}
+.box footer input[type=checkbox]{
+	vertical-align:sub;
+	*vertical-align:middle;
+	margin-right:10px;
+}
+.box input[type=text],
+.box input[type=password],
+.txtField,
+.cjComboBox
+{
+    border:6px solid #F7F9FA;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    -moz-box-shadow:2px 3px 3px rgba(0, 0, 0, 0.06) inset, 0 0 1px #95a2a7 inset;
+    -webkit-box-shadow:2px 3px 3px rgba(0, 0, 0, 0.06) inset, 0 0 1px #95a2a7 inset;
+    box-shadow:2px 3px 3px rgba(0, 0, 0, 0.06) inset, 0 0 1px #95a2a7 inset;
+    margin:3px 0 4px;
+    padding:8px 6px;
+    width:270px;
+    display:block;
+}
+.box input[type=text]:focus,
+.box input[type=password]:focus,
+.txtField:focus,
+.cjComboBox:focus
+{
+    border:6px solid #f0f7fc;
+    -moz-box-shadow:2px 3px 3px rgba(0, 0, 0, 0.04) inset, 0 0 1px #0d6db6 inset;
+    -webkit-box-shadow:2px 3px 3px rgba(0, 0, 0, 0.04) inset, 0 0 1px #0d6db6 inset;
+    box-shadow:2px 3px 3px rgba(0, 0, 0, 0.04) inset, 0 0 1px #0d6db6 inset;
+	color:#333;
+}
+.cjComboBox
+{
+    width:294px;
+}
+.cjComboBox.small
+{
+    padding:3px 2px 3px 6px;
+    width:100px;
+    border-width:3px !important;
+}
+.txtField.small
+{
+    padding:3px 6px;
+    width:200px;
+    border-width:3px !important;
+}
+
+.rLink{padding:0 6px 0 0; font-size:11px; float:right;}
+.box a{color:#999;}
+.box a:hover, .box a:focus{text-decoration:underline;}
+.box a:active{color:#f84747;}
+.btnLogin
+{
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:15px;
+    background:#a1d8f0;
+    background:-moz-linear-gradient(top, #badff3, #7acbed);
+    background:-webkit-gradient(linear, left top, left bottom, from(#badff3), to(#7acbed));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#badff3', EndColorStr='#7acbed')";
+    border:1px solid #7db0cc !important;
+    cursor: pointer;
+    padding:11px 16px;
+    font:bold 11px/14px Verdana, Tahomma, Geneva;
+    text-shadow:rgba(0,0,0,0.2) 0 1px 0px; 
+    color:#fff;
+    -moz-box-shadow:inset rgba(255,255,255,0.6) 0 1px 1px, rgba(0,0,0,0.1) 0 1px 1px;
+    -webkit-box-shadow:inset rgba(255,255,255,0.6) 0 1px 1px, rgba(0,0,0,0.1) 0 1px 1px;
+    box-shadow:inset rgba(255,255,255,0.6) 0 1px 1px, rgba(0,0,0,0.1) 0 1px 1px;
+    margin-left:12px;
+    float:right;
+	padding:7px 21px;
+}
+
+.btnLogin:hover,
+.btnLogin:focus,
+.btnLogin:active{
+    background:#a1d8f0;
+    background:-moz-linear-gradient(top, #7acbed, #badff3);
+    background:-webkit-gradient(linear, left top, left bottom, from(#7acbed), to(#badff3));
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#7acbed', EndColorStr='#badff3')";
+}
+.btnLogin:active
+{
+    text-shadow:rgba(0,0,0,0.3) 0 -1px 0px; 
+}
+footer#main{
+	position:fixed;
+	left:0;
+	bottom:10px;
+	text-align:center;
+	font:normal 11px/16px Arial, Helvetica, sans-serif;
+	width:100%;
+}
