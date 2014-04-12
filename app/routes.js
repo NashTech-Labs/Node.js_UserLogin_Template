@@ -1,9 +1,21 @@
+var User       = require('../app/models/user');
+
 module.exports = function(app, passport) {
 	app.get('/', function(request, response) {
 		response.render('index.html');
 	});
 	app.get('/user', auth, function(request, response) {
 		response.render('user.html', {
+			user : request.user
+		});
+	});
+	app.get('/edit', auth, function(request, response) {
+		response.render('edit.html', {
+			user : request.user
+		});
+	});
+	app.get('/about', auth, function(request, response) {
+		response.render('about.html', {
 			user : request.user
 		});
 	});
@@ -17,7 +29,7 @@ module.exports = function(app, passport) {
 		});
 
 		app.post('/login', passport.authenticate('login', {
-			successRedirect : '/user', 
+			successRedirect : '/about', 
 			failureRedirect : '/login', 
 			failureFlash : true
 		}));
@@ -28,11 +40,23 @@ module.exports = function(app, passport) {
 
 
 		app.post('/signup', passport.authenticate('signup', {
-			successRedirect : '/user',
+			successRedirect : '/about',
 			failureRedirect : '/signup', 
 			failureFlash : true 
 		}));
+		app.get('/edit', function(request, response) {
+			response.render('edit.html', { message: request.flash('updateerror') });
+		});
 
+
+		app.post('/edit',  function (req, res){
+ 			 User.findOne({ 'user.email' :  req.body.email }, function(err, user) {
+                		if (err){ return done(err);}
+                		if (user)
+                    			user.updateUser(req, res)
+
+                         });
+  		});
 
 
 // GET /auth/facebook
@@ -50,7 +74,7 @@ module.exports = function(app, passport) {
 // which, in this example, will redirect the user to the home page.
 		app.get('/auth/facebook/callback',
   			passport.authenticate('facebook', { 
-				successRedirect : '/user', 	
+				successRedirect : '/about', 	
 				failureRedirect: '/login' }));
 
 
@@ -72,7 +96,7 @@ app.get('/auth/twitter',
 // which, in this example, will redirect the user to the home page.
 app.get('/auth/twitter/callback',
   passport.authenticate('twitter', { 
-				successRedirect : '/user', 	
+				successRedirect : '/about', 	
 				failureRedirect: '/login' }));
 
 
@@ -91,7 +115,7 @@ app.get('/auth/google',
 // which, in this example, will redirect the user to the home page.
 app.get('/auth/google/callback',
   passport.authenticate('google', { 
-				successRedirect : '/user', 	
+				successRedirect : '/about', 	
 				failureRedirect: '/login' }));
 
 };

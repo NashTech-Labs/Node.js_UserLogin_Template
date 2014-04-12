@@ -48,22 +48,20 @@
           </fieldset>
         </div>
 </div>
-<div class="box profile">
-		<fieldset class="">
-			<div  class="row">
-				<div class="span12">
-					<label><strong>User Name:</strong> <%= user.user.username %></label>
-					<label><strong>Name:</strong> <%= user.user.name %></label> 
-					<label><strong>Email:</strong> <%= user.user.email %></label> 
-					<label><strong>Location:</strong> <%= user.user.address %></label> 
-				</div>
-				<br>
-				<br>
-				<div class="span4">
-					<label><a href="/edit"><strong>Update Profile</strong></a></label>
-				</div>
-			</div>
-		</fieldset>
-	</div>
+<form action="/edit" method="post" class="box login">
+	<label>User Name</label>
+	  <input type="text" tabindex="1" placeholder="Enter Your User Name" name="username" value ="<%= user.user.username %>" readonly>
+	<label>Name</label>
+	  <input type="text" tabindex="1" placeholder="Enter Your Name" name="name" value ="<%= user.user.name %>" required>
+	<label>Email</label>
+	  <input type="text" tabindex="1" placeholder="Enter Your Email Address" name="email" value ="<%= user.user.email %>" readonly>
+	  <label>Location</label>
+	  <input type="text" tabindex="1" placeholder="Enter Your Location" name="address" value ="<%= user.user.address %>" required>
+	<footer>
+	  <input type="submit" class="btnLogin" value="Update" tabindex="1">
+	</footer>
+
+</form>
+
 </body>
 </html>

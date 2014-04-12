@@ -1,8 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="description" content="">
 	<title>Knoldus Login Form</title>
 
 <link rel="stylesheet" type="text/css" href="/css/reset.css" />
@@ -13,8 +11,10 @@
 
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/menu.js"></script>
+
 </head>
 <body>
+
 <div id="content">
 
 <div class="topContent">
@@ -48,22 +48,18 @@
           </fieldset>
         </div>
 </div>
-<div class="box profile">
-		<fieldset class="">
-			<div  class="row">
-				<div class="span12">
-					<label><strong>User Name:</strong> <%= user.user.username %></label>
-					<label><strong>Name:</strong> <%= user.user.name %></label> 
-					<label><strong>Email:</strong> <%= user.user.email %></label> 
-					<label><strong>Location:</strong> <%= user.user.address %></label> 
-				</div>
-				<br>
-				<br>
-				<div class="span4">
-					<label><a href="/edit"><strong>Update Profile</strong></a></label>
-				</div>
-			</div>
-		</fieldset>
-	</div>
+
+<form class="box login">
+	<fieldset class="boxBody">
+
+		<label>This is Node.js Login Template . If you want to use
+			node.js and MongoDB as
+			Database then This demo project can be used as a starting point for
+			your application.
+		</label>
+		
+</fieldset>
+	
+</form>
 </body>
 </html>

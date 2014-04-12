@@ -75,6 +75,8 @@ module.exports = function(passport) {
 			newUser.user.username    = req.body.username;
                         newUser.user.email    = email;
                         newUser.user.password = newUser.generateHash(password);
+			newUser.user.name	= ''
+			newUser.user.address	= ''
                         newUser.save(function(err) {
                             if (err)
                                 throw err;
@@ -88,6 +90,9 @@ module.exports = function(passport) {
 		user.user.username    = req.body.username;
                 user.user.email    = email;
                 user.user.password = user.generateHash(password);
+			user.user.name	= ''
+			user.user.address	= ''
+
                 user.save(function(err) {
                     if (err)
                         throw err;
@@ -123,6 +128,9 @@ module.exports = function(passport) {
                         				var newUser            = new User();
 							newUser.user.username    = profile.displayName;
                         				newUser.user.email    = profile.emails[0].value;
+			newUser.user.name	= ''
+			newUser.user.address	= ''
+
                         				newUser.save(function(err) {
                             					if (err)
                                 					throw err;
@@ -135,6 +143,9 @@ module.exports = function(passport) {
 					var user            = req.user;
 					user.user.username    = profile.displayName;
                 			user.user.email    = profile.emails[0].value;
+			user.user.name	= ''
+			user.user.address	= ''
+
                 			user.save(function(err) {
                     				if (err)
                         				throw err;
@@ -166,6 +177,9 @@ module.exports = function(passport) {
                     				} else {
                         				var newUser            = new User();
 							newUser.user.username    = profile.displayName;
+			newUser.user.name	= ''
+			newUser.user.address	= ''
+
                         				newUser.save(function(err) {
                             					if (err)
                                 					throw err;
@@ -177,6 +191,9 @@ module.exports = function(passport) {
                          	} else {
 					var user            = req.user;
 					user.user.username    = profile.displayName;
+			user.user.name	= ''
+			user.user.address	= ''
+
                 			user.save(function(err) {
                     				if (err)
                         				throw err;
@@ -209,6 +226,9 @@ module.exports = function(passport) {
                         					var newUser            = new User();
 								newUser.user.username    = profile.displayName;
 								newUser.user.email    = profile.emails[0].value;
+			newUser.user.name	= ''
+			newUser.user.address	= ''
+
                         					newUser.save(function(err) {
                             						if (err)
                                 						throw err;
