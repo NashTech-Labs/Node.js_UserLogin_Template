@@ -1,5 +1,8 @@
 var User       = require('../app/models/user');
-
+var Friend       = require('../app/models/friend');
+async = require("async");
+var path = require('path'),
+    fs = require('fs');
 module.exports = function(app, passport) {
 	app.get('/', function(request, response) {
 		response.render('index.html');
@@ -9,6 +12,13 @@ module.exports = function(app, passport) {
 			user : request.user
 		});
 	});
+
+
+	app.get('/image.png', function (req, res) {
+    		res.sendfile(path.resolve('./uploads/image_'+req.user._id));
+	}); 
+
+
 	app.get('/edit', auth, function(request, response) {
 		response.render('edit.html', {
 			user : request.user
@@ -50,6 +60,19 @@ module.exports = function(app, passport) {
 
 
 		app.post('/edit',  function (req, res){
+				 var tempPath = req.files.file.path,
+        			targetPath = path.resolve('./uploads/'+req.files.file.originalFilename);
+    				if (path.extname(req.files.file.name).toLowerCase() === '.png') {
+        				fs.rename(tempPath, './uploads/image_'+req.user._id, function(err) {
+            					if (err) throw err;
+            				console.log("Upload completed!");
+        				});
+    				} else {
+        				fs.unlink(tempPath, function () {
+            					if (err) throw err;
+            				console.error("Only .png files are allowed!");
+       					 });
+    				}
  			 User.findOne({ 'user.email' :  req.body.email }, function(err, user) {
                 		if (err){ return done(err);}
                 		if (user)
@@ -57,6 +80,7 @@ module.exports = function(app, passport) {
 
                          });
   		});
+		
 
 
 // GET /auth/facebook

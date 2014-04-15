@@ -13,6 +13,8 @@
     "passport-facebook" : ">= 0.0.0", 
     "passport-twitter" : ">= 0.0.0", 	
     "passport-google-oauth" : ">= 0.0.0",		
-    "bcrypt-nodejs" : "latest"
+    "bcrypt-nodejs" : "latest",
+     "now":  ">=0.0.1",
+     "async": "latest"
   }
 }

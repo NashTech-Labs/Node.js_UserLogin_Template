@@ -30,7 +30,7 @@
                            <span>Profile</span>
                          </a></label></li>
               <li><label><a href="/profile">
-                           <span>Contact List</span>
+                           <span>Friend List</span>
                          </a></label></li>
               <li><label><a href="/password">
                            <span>Password Setting</span>
@@ -48,7 +48,7 @@
           </fieldset>
         </div>
 </div>
-<form action="/edit" method="post" class="box login">
+<form action="/edit" method="post" enctype="multipart/form-data" class="box login">
 	<label>User Name</label>
 	  <input type="text" tabindex="1" placeholder="Enter Your User Name" name="username" value ="<%= user.user.username %>" readonly>
 	<label>Name</label>
@@ -57,6 +57,8 @@
 	  <input type="text" tabindex="1" placeholder="Enter Your Email Address" name="email" value ="<%= user.user.email %>" readonly>
 	  <label>Location</label>
 	  <input type="text" tabindex="1" placeholder="Enter Your Location" name="address" value ="<%= user.user.address %>" required>
+  <label>Image</label><img src="/image.png"  name="userimage" id="userimage"  />
+    <input type="file" name="file">
 	<footer>
 	  <input type="submit" class="btnLogin" value="Update" tabindex="1">
 	</footer>

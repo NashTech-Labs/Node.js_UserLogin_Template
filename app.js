@@ -4,7 +4,8 @@ var port     = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
-var path = require('path')
+var path = require('path'),
+    fs = require('fs');
 
 var configDB = require('./config/database.js');
 
@@ -20,6 +21,7 @@ app.configure(function() {
 	app.set('views', __dirname + '/views');
 	app.engine('html', require('ejs').renderFile);
 	app.use(express.session({ secret: 'knoldus' })); 
+	app.use(express.bodyParser({uploadDir:'/images'}));
 	app.use(passport.initialize());
 	app.use(passport.session()); 
 	app.use(flash()); 
