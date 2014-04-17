@@ -1,5 +1,5 @@
 var User       = require('../app/models/user');
-var Friend       = require('../app/models/friend');
+
 async = require("async");
 var path = require('path'),
     fs = require('fs');
@@ -67,12 +67,7 @@ module.exports = function(app, passport) {
             					if (err) throw err;
             				console.log("Upload completed!");
         				});
-    				} else {
-        				fs.unlink(tempPath, function () {
-            					if (err) throw err;
-            				console.error("Only .png files are allowed!");
-       					 });
-    				}
+    				} 
  			 User.findOne({ 'user.email' :  req.body.email }, function(err, user) {
                 		if (err){ return done(err);}
                 		if (user)
