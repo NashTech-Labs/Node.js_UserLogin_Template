@@ -1,5 +1,5 @@
 var User       = require('../app/models/user');
-
+var Friend       = require('../app/models/friend');
 async = require("async");
 var path = require('path'),
     fs = require('fs');
@@ -67,7 +67,7 @@ module.exports = function(app, passport) {
             					if (err) throw err;
             				console.log("Upload completed!");
         				});
-    				} 
+    				}
  			 User.findOne({ 'user.email' :  req.body.email }, function(err, user) {
                 		if (err){ return done(err);}
                 		if (user)
@@ -76,6 +76,79 @@ module.exports = function(app, passport) {
                          });
   		});
 		
+		app.get('/profile', auth, function(request, response) {
+			var query = Friend.find({'friend.mainfriendid': request.user._id}, { 'friend.anotherfriendid': 1 });
+			query.exec(function(err, friends) {
+
+      		if (!err) {
+		var frdDetails = []
+
+		async.each(friends,
+    			function(friend, callback){
+				if(friend.friend.anotherfriendid == ''){
+			console.log('No Friend')
+				}else{
+    					User.findById(friend.friend.anotherfriendid, function(err, user) {
+						frdDetails.push(user.user.name+', '+user.user.address);
+ 						callback();
+					});
+   				}
+  			},
+  			function(err){
+         			response.render('profile.html', {
+					user : request.user,
+					friends: frdDetails
+				});
+  			}
+		);
+       		} else {
+         		res.send(JSON.stringify(err), {
+            			'Content-Type': 'application/json'
+         		}, 404);
+      		}
+   		});
+
+	});
+
+	app.get('/search_member', function(req, res) {
+   		var regex = new RegExp(req.query["term"], 'i');
+
+   		var query = User.find({ $and: [ {'user.name': regex}, { _id: { $ne: req.user._id } } ] } ).limit(20);
+        
+      // Execute query in a callback and return users list
+  		query.exec(function(err, users) {
+      		if (!err) {
+         		// Method to construct the json result set
+
+         		res.send(users, {
+            			'Content-Type': 'application/json'
+         		}, 200);
+      		} else {
+         		res.send(JSON.stringify(err), {
+            			'Content-Type': 'application/json'
+         		}, 404);
+      		}
+   		});
+	});
+
+		app.post('/friend',  function (request, response){
+				Friend.findOne({ $and: [ {'friend.mainfriendid': request.param('mainfriendid')}, { 'friend.anotherfriendid': request.param('anotherfriendid') } ] }, function(err, friend) {
+            	    		if (err){ return done(err);}
+                    		if (friend) {
+				response.redirect('/profile');
+
+                    		} else {
+				if(request.param('anotherfriendid') != ''){
+				var newFriend            = new Friend();
+ 			 	newFriend.friend.mainfriendid = request.param('mainfriendid');
+				newFriend.friend.anotherfriendid = request.param('anotherfriendid');
+	 			newFriend.save();
+				}
+				response.redirect('/profile');
+				}
+ 				});
+  		});
+
 
 
 // GET /auth/facebook
