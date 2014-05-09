@@ -6,6 +6,9 @@ var passport = require('passport');
 var flash    = require('connect-flash');
 var path = require('path'),
     fs = require('fs');
+ var http = require('http')
+var server = http.createServer(app)
+
 
 var configDB = require('./config/database.js');
 
@@ -29,7 +32,9 @@ app.configure(function() {
 });
 
 
-require('./app/routes.js')(app, passport); 
+require('./app/routes.js')(app, passport,server); 
 
-app.listen(port);
+server.listen(port);
 console.log('Listening  to  port ' + port);
+
+

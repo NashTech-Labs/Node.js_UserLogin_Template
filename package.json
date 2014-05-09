@@ -15,6 +15,7 @@
     "passport-google-oauth" : ">= 0.0.0",		
     "bcrypt-nodejs" : "latest",
      "now":  ">=0.0.1",
-     "async": "latest"
+     "async": "latest",
+        "socket.io": "latest"
   }
 }

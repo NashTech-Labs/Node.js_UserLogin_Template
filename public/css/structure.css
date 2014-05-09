@@ -134,8 +134,8 @@ body {
 	margin: 10px 0 0 6px;
 }
 
-.box img {
-	width: 172px;
+.box img#userimage {
+	width: 62px;
 	height: 47px;
 	padding: 10px 4px;
 }

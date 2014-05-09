@@ -3,7 +3,7 @@ var Friend       = require('../app/models/friend');
 async = require("async");
 var path = require('path'),
     fs = require('fs');
-module.exports = function(app, passport) {
+module.exports = function(app, passport,server) {
 	app.get('/', function(request, response) {
 		response.render('index.html');
 	});
@@ -209,6 +209,26 @@ app.get('/auth/google/callback',
   passport.authenticate('google', { 
 				successRedirect : '/about', 	
 				failureRedirect: '/login' }));
+
+
+var io = require('socket.io').listen(server);
+
+var usernames = {};
+
+io.sockets.on('connection', function (socket) {
+
+  socket.on('adduser', function(username){
+    socket.username = username;
+    usernames[username] = username;
+    io.sockets.emit('updateusers', usernames);
+  });
+
+  socket.on('disconnect', function(){
+    delete usernames[socket.username];
+    io.sockets.emit('updateusers', usernames);
+    socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
+  });
+});
 
 };
 function auth(req, res, next) {

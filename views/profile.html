@@ -15,6 +15,52 @@
 <script type="text/javascript" src="/js/menu.js"></script>
  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+  var socket = io.connect('http://localhost:8080');
+
+  socket.on('connect', function(){
+    socket.emit('adduser', "<%= user.user.name %>, <%= user.user.address %>");
+  });
+
+  socket.on('updateusers', function(data) {
+    $('#users').empty();
+var html = '<h2>Friend List</h2> <ul><% for(var i=0; i<friends.length; i++) { %><li><a href="#">'
+    $.each(data, function(key, value) {
+
+var str = "<%= friends[i] %>";
+
+if(key =='<%= friends[i] %>') {
+
+	if(html.indexOf(str) != -1){
+		html += '<img src="images/green-dot.png"  >'
+	}else{
+		html += '<img src="images/green-dot.png" ><%= friends[i] %>'
+	}	
+   }else{
+
+	if(html.indexOf(str) != -1){
+		html += ''
+	}else{
+		html += '<%= friends[i] %>'
+	}	
+
+
+}
+
+     
+    });
+
+	html +=  '</a></li><% } %> </ul>'
+
+
+$('#users').append(html)
+
+  });
+
+
+</script>
 <style>
 
  
@@ -154,12 +200,9 @@ $(function () {
 	</div>
 </form>
 
-<div class="box reminder">
+<div class="box reminder" id="users">
 
-  <h2>Friend List</h2>
-  <ul>
-    <% for(var i=0; i<friends.length; i++) { %><li><a href="#"><%= friends[i] %></a></li><% } %>
-  </ul>
+
 
 </div>
 </div>
