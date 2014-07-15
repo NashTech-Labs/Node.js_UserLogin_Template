@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+	<title>Knoldus Login Form</title>
+
+<link rel="stylesheet" type="text/css" href="/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/css/structure.css" />
+
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+ <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+</head>
+<body>
+
+<div id="content">
+
+	<div class="topContent">
+          <fieldset class="">
+		<br>
+            <label>Welcome  <%= user.user.username %></label>
+          </fieldset>
+        </div>
+        <div id="menu">
+          <fieldset class="">
+            <ul class="menu">
+              <li><label><a href="/user">
+                           <span>Profile</span>
+                         </a></label></li>
+              <li><label><a href="/profile">
+                           <span>Friend List</span>
+                         </a></label></li>
+              <li><label><a href="/password">
+                           <span>Password Setting</span>
+                         </a></label></li>
+              <li><label><a href="/reminder">
+                           <span>Birthday Reminder</span>
+                         </a></label></li>
+              <li><label><a href="/chat">
+                           <span>Chat</span>
+                         </a></label></li>
+              <li><label><a href="/logout">
+                           <span>Log Out</span>
+                         </a></label></li>
+            </ul>
+          </fieldset>
+        </div>
+</div>
+</body>
+</html>
