@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "main": "server.js",
   "dependencies" : {
-    "express" : "3.4.8", 
+    "express" : "4.17.1", 
     "ejs" : "0.8.5",
     "connect-flash" : "0.1.1", 				
     "mongoose" : "3.8.8", 			
